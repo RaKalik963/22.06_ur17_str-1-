@@ -1,35 +1,31 @@
 #include <iostream>
 using namespace std;
 
+void removeAllChars(char str[], char symbol) {
+    int len = 0;
+    while (str[len] != '\0') {
+        len++;
+    }
 
-void replace(char* str, int num)
-{
-	for (size_t i = 0; str[i] != '\0'; i++)
-	{
-		if (str[i] == ' ')
-		{
-			str[char(num)] = ' ';
-		}
-	}
+    int j = 0;
+    for (int i = 0; i < len; i++) {
+        if (str[i] != symbol) {
+            str[j++] = str[i];
+        }
+    }
+    str[j] = '\0';
 }
 
-int main()
-{
-	for (size_t i = 65; i <= 122; i++)
-	{
-		cout << "\t\t" << i << " - " << char(i) << endl;
-	}
-	char str[] = "Hello world!";
-	int num;
-	do
-	{
-		cout << "enter num to delete symbol";
-		cin >> num;
-	} while (num <= 65 && num >= 122);
+int main() {
+    char str[] = "hello world hello world";
+    char symbol;
 
-	replace(str, num);
-	cout << str << endl;
+    cout << "Enter symbol to delete: ";
+    cin >> symbol;
 
-	system("pause");
-	return 0;
+    removeAllChars(str, symbol);
+
+    cout << "Result: " << str << endl;
+
+    return 0;
 }

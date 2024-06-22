@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void removeAllChars(char str[], char symbol, int num) {
+void removeAllChars(char str[]) {
     int len = 0;
     while (str[len] != '\0') {
         len++;
@@ -15,19 +15,24 @@ void removeAllChars(char str[], char symbol, int num) {
     }
     str[j] = '\0';
 }
+void replace(char* str, int num)
+{
+    for (size_t i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] == ' ')
+        {
+            str[num] = ' ';
+        }
+    }
+}
 
 int main() {
-    char str[] = "hello world hello world";
-    char symbol;
-    int num;
+    char str[100];
 
     cout << "enter position to paste your symbol";
-    cin >> num;
+    cin >> str;
 
-    cout << "Enter symbol to paste: ";
-    cin >> symbol;
-
-    removeAllChars(str, symbol, num);
+    removeAllChars(str);
 
     cout << "Result: " << str << endl;
 

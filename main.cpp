@@ -1,33 +1,41 @@
 #include <iostream>
 using namespace std;
 
-void removeAllChars(char str[], char symbol, int num) {
-    int len = 0;
-    while (str[len] != '\0') {
-        len++;
+// Функція для вставки символа в рядок у вказану позицію
+void insertChar(char str[], char ch, int position) {
+    // Знайти довжину рядка
+    int length = 0;
+    while (str[length] != '\0') {
+        ++length;
     }
 
-    int j = 0;
-    for (int i = 0; i < len; i++) {
-        if (str[symbol] == num) {
-            str[symbol] = str[num];
-        }
+    // Перевірити, чи позиція дійсна
+    if (position < 0 || position > length) {
+        cout << "Invalid position" << endl;
+        return;
     }
-    str[j] = '\0';
+
+    for (int i = length; i >= position; --i) {
+        str[i + 1] = str[i];
+    }
+
+    str[position] = ch;
 }
 
 int main() {
-    char str[] = "hello world hello world";
+    char str[] = "hello world hello world"; 
+    cout << "String: " << str << endl;
+
     char symbol;
-    int num;
+    int position;
 
-    cout << "enter position to paste your symbol";
-    cin >> num;
+    cout << "Enter position to insert your symbol: ";
+    cin >> position;
 
-    cout << "Enter symbol to paste: ";
+    cout << "Enter symbol to insert: ";
     cin >> symbol;
 
-    removeAllChars(str, symbol, num);
+    insertChar(str, symbol, position);
 
     cout << "Result: " << str << endl;
 
